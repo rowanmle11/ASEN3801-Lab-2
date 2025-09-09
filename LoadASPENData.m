@@ -40,10 +40,10 @@ function [t_vec, av_pos_inert, av_att, tar_pos_inert, tar_att] = LoadASPENData(f
     t_vec = (frame - frame(1))'./100;
     
     % Extract assumed columns
-    pos_av_aspen = data(6:end,2:4)';   % 3 x n
-    att_av_aspen = data(6:end,5:7)';   % 3 x n (assumed degrees; convert below)
-    pos_tar_aspen = data(6:end,8:10)'; % 3 x n
-    att_tar_aspen = data(6:end,11:13)';
+    att_av_aspen = data(6:end,3:5)';   % 3 x n (assumed degrees; convert below)
+    pos_av_aspen = data(6:end,6:8)';   % 3 x n
+    att_tar_aspen = data(6:end,9:11)'; % 3 x n
+    pos_tar_aspen = data(6:end,12:14)'; % 3 x n
 
     % att_av_aspen = deg2rad(att_av_aspen);s
     % att_tar_aspen = deg2rad(att_tar_aspen);
