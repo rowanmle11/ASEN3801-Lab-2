@@ -33,7 +33,8 @@ function [t_vec, av_pos_inert, av_att, tar_pos_inert, tar_att] = LoadASPENData(f
         error('LoadASPENData: expected at least 13 columns in file, found %d', size(data,2));
     end
 
-    frame = data(:,1);
+    %frame = data(:,1);
+    frame = data(6:end,1);
     n = length(frame);
 
     % Time vector (100 Hz capture)
