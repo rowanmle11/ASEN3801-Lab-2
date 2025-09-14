@@ -19,6 +19,27 @@ clc;
 
 %% Problem 5
 
+n1 = size(av_pos_inert_1,2);
+att313_av_1 = zeros(3,n1);
+att313_tar_1 = zeros(3,n1);
+for k = 1:n1
+    DCM_av = RotationMatrix321(av_att_1(:,k));
+    DCM_tar = RotationMatrix321(tar_att_1(:,k));
+    att313_av_1(:,k) = EulerAngles313(DCM_av);
+    att313_tar_1(:,k) = EulerAngles313(DCM_tar);
+end
+
+figure;
+for i = 1:3
+    subplot(3,1,i)
+    plot(t_vec_1, rad2deg(att313_av_1(i,:)), '-b'); hold on;
+    plot(t_vec_1, rad2deg(att313_tar_1(i,:)), '--r');
+    ylabel(['313 angle ',num2str(i),' [deg]']);
+    if i==1, title('Problem 5: 3-1-3 Euler angles (Test 1)'); end
+    if i==3, xlabel('Time [s]'); end
+    legend('Vehicle','Target');
+    grid on;
+end
 
 
 %% Problem 6
