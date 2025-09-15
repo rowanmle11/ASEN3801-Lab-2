@@ -15,6 +15,45 @@ clc;
 
 %% Problem 4
 
+figure
+
+yaxis = ['X','Y','Z'];
+
+for i = 1:3
+
+    subplot(3,1,i)
+    hold on
+    plot(t_vec_1,av_pos_inert_1(i,:),'Color','b')
+    plot(t_vec_1,tar_pos_inert_1(i,:),'Color','r')
+    legend('Aircraft','Target')
+    xlabel('Time')
+    ylabel('Position')
+    title(yaxis(i))
+    grid on
+    hold off
+
+end
+
+figure
+
+yaxis2 = ['Φ','θ','Ψ'];
+
+for i = 1:3
+
+    subplot(3,1,i)
+    hold on
+    plot(t_vec_1,av_att_1(i,:),'Color','b')
+    plot(t_vec_1,tar_att_1(i,:),'Color','r')
+    legend('Aircraft','Target')
+    xlabel('Time')
+    title(yaxis2(i))
+    ylabel('Radians')
+    grid on
+    hold off
+
+end
+
+
 
 
 %% Problem 5
@@ -25,8 +64,8 @@ att313_tar_1 = zeros(3,n1);
 for k = 1:n1
     DCM_av = RotationMatrix321(av_att_1(:,k));
     DCM_tar = RotationMatrix321(tar_att_1(:,k));
-    att313_av_1(:,k) = EulerAngles313(DCM_av);
-    att313_tar_1(:,k) = EulerAngles313(DCM_tar);
+    att313_av_1(:,k) = EulerAngles313_(DCM_av);
+    att313_tar_1(:,k) = EulerAngles313_(DCM_tar);
 end
 
 figure;
